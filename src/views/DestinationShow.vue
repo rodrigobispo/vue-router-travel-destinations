@@ -19,7 +19,9 @@ export default defineComponent({
       return parseInt(this.$route.params.id)
     },
     destination() {
-      return sourceData.destinations.find(destination => destination.id === this.destinationId)
+      return sourceData.destinations.find(
+        (destination) => destination.id === this.destinationId
+      )
     }
   }
 })
