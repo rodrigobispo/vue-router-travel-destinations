@@ -13,6 +13,7 @@ import { defineComponent } from 'vue';
 import sourceData from '@/data.json'
 
 export default defineComponent({
+  name: 'DestinationShow',
   computed: {
     destinationId() {
       return parseInt(this.$route.params.id)
