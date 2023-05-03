@@ -7,3 +7,12 @@
     <router-link to="/panama">Panama</router-link>
   </div>
 </template>
+
+<style lang="css">
+
+#nav .my-active-link {
+  color: yellow;
+  border-bottom: 3px solid pink;
+}
+
+</style>
