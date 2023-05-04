@@ -15,20 +15,25 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'Login',
-  data() {
-    return {
-      username: '',
-      password: ''
+  setup() {
+    const username = ref('')
+    const password = ref('')
+    const router = useRouter()
+    const route = useRoute()
+    
+    const login = () => {
+      window.user = username.value
+      const redirectPath = route.query.redirect || '/protected'
+      router.push(redirectPath)
     }
-  },
-  methods: {
-    login() {
-      window.user = this.username
-      this.$router.push({ name: 'protected' })
+
+    return {
+      username, password, login
     }
   }
 })
