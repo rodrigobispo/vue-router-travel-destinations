@@ -6,23 +6,39 @@
       <p>{{ destination.description }}</p>
     </div>
   </section>
+
+  <section class="experiences">
+    <h2>Top Experiences in {{ destination.name }}</h2>
+
+    <div class="cards">
+      <router-link
+        v-for="experience in destination.experiences"
+        :key="experience.slug"
+        :to="{ name: 'experience.show', params: {experienceSlug: experience.slug} }"
+      >
+        <ExperienceCard :experience="experience"></ExperienceCard>
+      </router-link>
+    </div>
+  </section>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import sourceData from '@/data.json'
+import ExperienceCard from '@/components/ExperienceCard.vue';
 
 export default defineComponent({
-  name: 'DestinationShow',
-  props: {
-    id: { type: Number, required: true }
-  },
-  computed: {
-    destination() {
-      return sourceData.destinations.find(
-        (destination) => destination.id === this.id
-      )
-    }
-  }
+    name: 'DestinationShow',
+    components: { ExperienceCard },
+    props: {
+      id: { type: Number, required: true }
+    },
+    computed: {
+      destination() {
+        return sourceData.destinations.find(
+          (destination) => destination.id === this.id
+        );
+      }
+    },
 })
 </script>
