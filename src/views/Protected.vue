@@ -6,6 +6,9 @@
     <h1>You are not logged in</h1>
   </div>
   <button @click="logout">{{ textButton }}</button>
+  <router-link :to="{name: 'invoices'}">
+    <button>Invoices</button>
+  </router-link>
 </template>
 
 <script>

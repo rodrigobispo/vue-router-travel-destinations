@@ -22,6 +22,14 @@ const routes = [
     component: () => import('@/views/Login.vue')
   },
   {
+    path: '/invoices',
+    name: 'invoices',
+    component: () => import('@/views/Invoices.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: "/destination/:id/:slug",
     name: 'destination.show',
     component: () => import('@/views/DestinationShow.vue'),
@@ -75,7 +83,7 @@ this function is fired. we can access meta data.
 // eslint-disable-next-line no-unused-vars
 router.beforeEach((to, from) => {
   if (to.meta.requiresAuth && !window.user) {
-    return { name: 'login' }
+    return { name: 'login', query: { redirect: to.fullPath } }
   }
 })
 
