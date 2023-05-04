@@ -1,5 +1,7 @@
-# vue-router-travel-destinations
+# Travel Destinations
+Site que trafega entre destinos de viagens; Estudo/Exercício sobre router do Vuejs e seus recursos, com navegabilidade entre os componentes.
 
+Exemplo prático para estudo extraído do [Vue School](https://vueschool.io), focado em Router do Vue.
 ## Project setup
 ```
 npm install
