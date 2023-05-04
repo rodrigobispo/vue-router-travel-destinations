@@ -1,6 +1,7 @@
 <template>
   <section class="destination">
     <h1>{{ destination.name }}</h1>
+    <GoBack />
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name">
       <p>{{ destination.description }}</p>
@@ -19,6 +20,8 @@
         <ExperienceCard :experience="experience"></ExperienceCard>
       </router-link>
     </div>
+
+    <router-view />
   </section>
 </template>
 
@@ -26,10 +29,11 @@
 import { defineComponent } from 'vue';
 import sourceData from '@/data.json'
 import ExperienceCard from '@/components/ExperienceCard.vue';
+import GoBack from '@/components/GoBack.vue';
 
 export default defineComponent({
     name: 'DestinationShow',
-    components: { ExperienceCard },
+    components: { ExperienceCard, GoBack },
     props: {
       id: { type: Number, required: true }
     },
