@@ -26,12 +26,3 @@ export default defineComponent({
 })
 
 </script>
-
-<style lang="css">
-
-#nav .my-active-link {
-  color: yellow;
-  border-bottom: 3px solid pink;
-}
-
-</style>
