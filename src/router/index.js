@@ -7,6 +7,19 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/protected",
+    name: 'protected',
+    component: () => import('@/views/Protected.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/Login.vue')
   },
   {
     path: "/destination/:id/:slug",
@@ -14,7 +27,7 @@ const routes = [
     component: () => import('@/views/DestinationShow.vue'),
     // props: true
     props: route => ({ id: parseInt(route.params.id) }),
-
+    
     beforeEnter(to, from) { // eslint-disable-line no-unused-vars
 
       const exist = sourceData.destinations.find(
@@ -27,7 +40,6 @@ const routes = [
         query: to.query,
         hash: to.hash
       }
-
     },
     children: [
       {
@@ -54,5 +66,17 @@ const router = createRouter({
     })
   }
 });
+
+/*
+a global navigation guard:
+every single time a route changes in the application,
+this function is fired. we can access meta data.
+*/ 
+// eslint-disable-next-line no-unused-vars
+router.beforeEach((to, from) => {
+  if (to.meta.requiresAuth && !window.user) {
+    return { name: 'login' }
+  }
+})
 
 export default router;
