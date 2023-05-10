@@ -1,4 +1,5 @@
 <template>
+<div>
   <div v-if="logged()">
     <h1>Greetings, {{ username }}</h1>
   </div>
@@ -6,13 +7,14 @@
     <h1>You are not logged in</h1>
   </div>
   <button @click="logout">{{ textButton }}</button>
-  <router-link :to="{name: 'invoices'}">
+  <router-link :to="{ name: 'invoices' }">
     <button>Invoices</button>
   </router-link>
+</div>
 </template>
 
 <script>
-export default{
+export default {
   data() {
     return {
       username: window.user
