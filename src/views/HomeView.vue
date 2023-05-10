@@ -2,6 +2,9 @@
   <div class="home">
     <h1>All Destinations</h1>
 
+    <button @click="addDynamicRoute">Add Dynamic Route</button>
+    <router-link to="/dynamic">&nbsp; Visit Dynamic Route</router-link>
+
     <div class="destinations">
       <router-link
         v-for="destination in destinations"
@@ -24,6 +27,16 @@ export default{
   data() {
     return {
       destinations: sourceData.destinations,
+    }
+  },
+
+  methods: {
+    addDynamicRoute() {
+      this.$router.addRoute({
+        name: 'dynamic',
+        path: '/dynamic',
+        component: () => import('@/views/Login.vue')
+      })
     }
   }
 
