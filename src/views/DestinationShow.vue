@@ -1,4 +1,5 @@
 <template>
+<div>
   <section class="destination">
     <h1>{{ destination.name }}</h1>
     <GoBack />
@@ -7,22 +8,23 @@
       <p>{{ destination.description }}</p>
     </div>
   </section>
-
+  
   <section class="experiences">
     <h2>Top Experiences in {{ destination.name }}</h2>
-
+    
     <div class="cards">
       <router-link
-        v-for="experience in destination.experiences"
-        :key="experience.slug"
-        :to="{ name: 'experience.show', params: {experienceSlug: experience.slug} }"
+      v-for="experience in destination.experiences"
+      :key="experience.slug"
+      :to="{ name: 'experience.show', params: {experienceSlug: experience.slug} }"
       >
-        <ExperienceCard :experience="experience"></ExperienceCard>
+      <ExperienceCard :experience="experience"></ExperienceCard>
       </router-link>
     </div>
 
     <router-view />
   </section>
+</div>
 </template>
 
 <script>
